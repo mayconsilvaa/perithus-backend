@@ -13,7 +13,7 @@
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Node.js](https://nodejs.org/en/)
-- [Express]
+- [Express](https://expressjs.com/pt-br/)
 - [MongoDB](mongodb.com)
 
 ## 💻 Projeto
