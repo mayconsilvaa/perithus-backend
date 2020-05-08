@@ -20,6 +20,24 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 O Gestor Financeiro é um projeto que visa auxiliar na educação econômica e entender melhor como faturar, lucrar com a venda e distribuição dos produtos.
 
+## BACK-END
+
+## :heavy_check_mark: Feito:
+
+- Permitir o cadastro do distribuidor e utilizar e-mail e senha como forma de autenticação, login no sistema.
+- Permitir o registro da quantidade de sabonetes comprados em uma data
+- Realizar o cálculo dos impostos devidos por mês e ano de referência
+- Permitir a consulta de produtos e impostos por mês e ano de referência
+- Permitir marcar o imposto como PAGO
+- Editar e Excluir um registro criado por ele
+
+## :x: Pendente:
+
+- Calcular 18,5%
+- Listar os valores do lote e valor unitário do produto
+
+
+
 
 ---
 
