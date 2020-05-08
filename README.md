@@ -36,6 +36,20 @@ O Gestor Financeiro é um projeto que visa auxiliar na educação econômica e e
 - Calcular 18,5%
 - Listar os valores do lote e valor unitário do produto
 
+| Route               |  Params            | Type |
+| ------------------- | ------------------- |------|      
+|  /users             | name,email,password | post |      
+|  /login |  email, password | post      | 
+|/product | year, month | get |
+|/product |name, quantity, date, price | post|
+|/product | productId | get |
+|/product | productId | put |
+|/product | productId | delete |
+|/tribute | year, mont | get |
+|/tribute | year, month | post|
+|/tribute | productId | get |
+|/tribute | productId | put |
+|/tribute | productId | delete |
 
 
 
