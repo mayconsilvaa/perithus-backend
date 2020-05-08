@@ -42,7 +42,7 @@ routes.use(authMiddleware);
 
 // route product
 
-routes.get('/products', ProductsController.index);
+routes.get('/product/:year/:month', ProductsController.index);
 routes.post('/product', ValidateProductStore, ProductsController.store);
 routes.get('/product/:productId', ProductsController.show);
 routes.put(
@@ -54,9 +54,10 @@ routes.delete('/product/:productId', ProductsController.destroy);
 
 // route tributes
 
-routes.get('/tributes', TributesController.index);
+routes.get('/tribute/:year/:month', TributesController.index);
 routes.post('/tribute', TributesController.store);
 routes.get('/tribute/:tributeId', TributesController.show);
 routes.put('/tribute/:tributeId', TributesController.update);
+routes.delete('/tribute/:tributeId', TributesController.destroy);
 
 export default routes;

@@ -3,13 +3,11 @@ import Tributes from '../models/Tributes';
 
 class TributesController {
   async index(req, res) {
-    const { year_reference, month } = req.body;
-
-    console.log(year_reference, month);
+    const { year, month } = req.params;
 
     try {
       const searchTributes = await Tributes.find({
-        year_reference,
+        year_reference: year,
         month,
         // $and: [{ year_reference }, { month }],
       });
@@ -72,6 +70,13 @@ class TributesController {
         },
       });
 
+      if (searchProducts.length === 0) {
+        return res.status(400).json({
+          message:
+            'Nenhum registro localizado. Por gentileza, verifique o ano e mês informado!',
+        });
+      }
+
       const resu = [];
       searchProducts.map((products) => {
         return resu.push(products.price);
@@ -129,6 +134,31 @@ class TributesController {
     } catch (e) {
       return res.status(404).json({
         message: 'Ops! Não foi possível atualizar o imposto desejado.',
+      });
+    }
+  }
+
+  async destroy(req, res) {
+    const { tributeId } = req.params;
+
+    try {
+      const tribute = await Tributes.findById(tributeId);
+
+      if (!tribute) {
+        return res.status(404).json({
+          message: 'O id informado não foi localizado',
+        });
+      }
+
+      const response = await Tributes.deleteOne({ _id: tribute._id });
+
+      return res.status(200).json({
+        message: 'Imposto excluído com sucesso!',
+        response,
+      });
+    } catch (e) {
+      return res.status(200).json({
+        message: 'Ops! Não foi possível excluir o imposto desejado. Verifique!',
       });
     }
   }

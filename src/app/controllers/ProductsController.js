@@ -2,16 +2,32 @@ import Product from '../models/Product';
 
 class ProductsController {
   async index(req, res) {
+    const { year, month } = req.params;
+
     try {
-      const response = await Product.find();
+      const searchProducts = await Product.find({
+        $expr: {
+          $and: [
+            { $eq: [{ $year: '$created_at' }, parseInt(year)] },
+            { $eq: [{ $month: '$created_at' }, parseInt(month)] },
+          ],
+        },
+      });
+
+      if (searchProducts.length === 0) {
+        return res.status(400).json({
+          message:
+            'Nenhum registro localizado. Por gentileza, verifique o ano e mês informado!',
+        });
+      }
 
       return res.status(200).json({
-        message: 'Registros localizados com sucesso!',
-        response,
+        message: 'Produtos localizados com sucesso!',
+        searchProducts,
       });
     } catch (e) {
       return res.status(404).json({
-        message: 'Falha ao buscar os registros.',
+        message: 'Ops! Algo ocorreu por aqui...',
       });
     }
   }
